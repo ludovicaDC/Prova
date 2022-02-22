@@ -32,10 +32,9 @@ public class DepartmentController implements Serializable {
 		this.newDepartment = new Departament();
 		this.arrDepartment = departmentService.getAllDepartment();
 		setSelectDepartment(new Departament());
-
 	}
 
-	// list
+	// lista dipartimenti
 	public List<Departament> departamentList() {
 		return departmentService.getAllDepartment();
 	}
