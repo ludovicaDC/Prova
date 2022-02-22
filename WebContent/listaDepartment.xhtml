@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:s="http://jboss.org/schema/seam/taglib">
+
+
+<h:head>
+	<title>Lista Department</title>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Lato" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+</h:head>
+<body>
+
+	<!-- Navbar -->
+	<div class="w3-top">
+		<div class="w3-bar w3-black w3-card">
+			<a
+				class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right"
+				href="javascript:void(0)" onclick="myFunction()"
+				title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a> <a
+				href="home.xhtml" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+
+		</div>
+	</div>
+	<div>
+		<br /> <br /> <br />
+		<center>
+			<h2>
+				<h:outputText value="Department Records" />
+			</h2>
+		</center>
+
+	</div>
+	<h:form id="departmentForm">
+		<div class="form-group">
+			<div class="col-sm-4"></div>
+		</div>
+		<p:dataTable id="departmentTable"
+			selection="#{controllerDepartment.selectDepartment}"
+			selectionMode="single" rowKey="#{dipartimento.idDep}" rows="20"
+			value="#{controllerDepartment.arrDepartment}" var="dipartimento"
+			styleclass="tablestyle">
+
+			<p:column headerText="Nome Dipartimento">
+				<h:outputText value="#{dipartimento.nameDep}">
+				</h:outputText>
+			</p:column>
+
+		</p:dataTable>
+		<p:commandButton action="createDepartment.xhtml?faces-redirect=true"
+			styleClass="btn btn-success btnSpace"
+			value="Inserisci un nuovo dipartimento"></p:commandButton>
+
+		<p:commandButton action="editDepartment.xhtml?faces-redirect=true"
+			styleClass="btn btn-success btnSpace" value="Modica un dipartimento"></p:commandButton>
+
+		<p:commandButton value="Elimina"
+			action="#{controllerDepartment.deleteDepartment()}"
+			process="departmentForm" update="departmentForm"></p:commandButton>
+	</h:form>
+
+</body>
+</html>
