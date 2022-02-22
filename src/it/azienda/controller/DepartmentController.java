@@ -39,7 +39,7 @@ public class DepartmentController implements Serializable {
 		return departmentService.getAllDepartment();
 	}
 
-	// create
+	// create dipartimenti
 	public String createDepartment() {
 		departmentService.createDepartment(newDepartment);
 		reloadDepartment();
